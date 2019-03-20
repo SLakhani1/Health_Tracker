@@ -24,8 +24,8 @@ urlpatterns = [
     path('patient/', views.PatientList.as_view()),
     path('create/', views.RecordCreateAPIView.as_view()),
     path('update/', views.RecordUpdateAPIView.as_view()),
-    #path('login/', login_view, name='login'),
-    #path('logout/', logout_view, name='logout'),
-    #path('register/', register_view, name='register'),
-    #path('records/', views.RecordList.as_view())
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('register/', register_view, name='register'),
+    path('records/', views.RecordList.as_view())
 ]

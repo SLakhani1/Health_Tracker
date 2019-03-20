@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
 #from django.contrib.auth.models import AbstractUser
 
 #class User(AbstractUser):
@@ -12,16 +13,17 @@ from django.utils import timezone
 class Patient(models.Model):
 #    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    adhaarId = models.IntegerField()
+    adhaarId = models.IntegerField(primary_key=True)  #Add length of adhaar no
     fname = models.CharField(max_length=20)
     sname = models.CharField(max_length=20)
     contact_no = models.IntegerField()
     address = models.CharField(max_length=70)
     
     def __str__(self):
-        return self.fname
+        return str(self.adhaarId)
 
 class Record(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     patient = models.ForeignKey('webapp.Patient', on_delete=models.CASCADE, related_name='records')
     created_date = models.DateTimeField(default = timezone.now)
     hospital_name = models.CharField(max_length=50)
@@ -34,4 +36,4 @@ class Record(models.Model):
     payment = models.IntegerField()
 
     def __str__(self):
-        return self.hospital_name
+        return str(self.patient)

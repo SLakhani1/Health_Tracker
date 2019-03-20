@@ -21,9 +21,11 @@ class PatientSerializer(serializers.ModelSerializer):
 class RecordCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Record
-        fields = '__all__'
+        fields = ('patient', 'hospital_name', 'hospital_address', 'admission_date', 'discharge_date', 'disease', 'treatment', 'treated_by', 'payment')
+        #fields = '__all__'
 
 class RecordUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Record
-        fields = '__all__'
+        fields = ('patient', 'hospital_name', 'hospital_address', 'admission_date', 'discharge_date', 'disease', 'treatment', 'treated_by', 'payment')
+        #fields = '__all__'
